@@ -17,9 +17,9 @@ class CarPrice:
         # you may need to change this search option based on the website you're
         # getting the data from!
         all_data = soup.find_all('div', {'class': 'listdata'})
+
         my_list = list()
-#        for test purposes and in case you want the results on file
-#        my_file = open('/home/doctorcode7/Desktop/file.txt', 'w')
+
         for data in range(len(all_data)):
             car_h2_details = all_data[data]
             car_h2_details = car_h2_details.find('h2')
@@ -44,16 +44,10 @@ class CarPrice:
             kilometers = all_data[data]
             kilometers = kilometers.find('p', {'class': 'price hidden-xs'})
             kilometers = kilometers.text
-    #        for test purpose (file)
-            # my_file.write("%s\n" % date_of_manufacture)
-            # my_file.write("%s\n" % model)
-            # my_file.write("%s\n" % brand)
-            # my_file.write("%s\n" % price)
-            # my_file.write("%s\n" % kilometers)
 
             my_list.extend([(date_of_manufacture, brand, model, kilometers,
                              price)])
-    #    my_file.close()
+
         return my_list
 
     def predict_car_price(my_list, new_data):
